@@ -8,18 +8,18 @@
 // Database connection information
 $this->dbType = 'pdo_mysql';
 $this->dbCharset = 'utf8';
-$this->dbHost = '<dbHost>'; // database host name
+$this->dbHost = 'db'; // database host name
 $this->dbPort  = 3306; // tcp port to which the database is bound
-$this->dbName = '<dbName>'; // database name
-$this->dbUser = '<dbUser>'; // database user name
-$this->dbPwd  = '<dbPwd>'; // database user password
+$this->dbName = 'oxid'; // database name
+$this->dbUser = 'oxid'; // database user name
+$this->dbPwd  = 'oxid'; // database user password
 $this->dbDriverOptions = []; // database driver options
 $this->dbUnixSocket = null; // unix domain socket, optional
-$this->sShopURL     = '<sShopURL>'; // eShop base url, required
+$this->sShopURL     = 'https://oxid-coding-days.docker.localhost'; // eShop base url, required
 $this->sSSLShopURL  = null;            // eShop SSL url, optional
 $this->sAdminSSLURL = null;            // eShop Admin SSL url, optional
-$this->sShopDir     = '<sShopDir>';
-$this->sCompileDir  = '<sCompileDir>';
+$this->sShopDir     = '/app/source';
+$this->sCompileDir  = "{$this->sShopDir}/tmp";
 
 /**
  * Force shop edition. Even if enterprise or professional packages exists, shop edition can still be forced here.
@@ -69,7 +69,7 @@ $this->blSeoLogging = false;
  * 6 = SMTP Debug Messages
  * 8 = display smarty template names (requires /tmp cleanup)
  */
-$this->iDebug = 0;
+$this->iDebug = -1;
 
 /**
  * Should template blocks be highlighted in frontend?

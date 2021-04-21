@@ -1,0 +1,12 @@
+version: '2.3'
+
+services:
+  oxid:
+    user: "www-data:www-data"
+    tmpfs:
+      - /app/source/tmp:size=64M,uid=33,gid=33
+      - /php/sessions:size=64M,uid=33,gid=33
+      - /php/upload_tmp:size=64M,uid=33,gid=33
+    environment:
+      PHPINI_SESSION__SAVE_PATH: /php/sessions
+      PHPINI_UPLOAD_TMP_DIR: /php/upload_tmp

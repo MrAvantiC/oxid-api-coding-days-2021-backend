@@ -987,7 +987,7 @@ modules:
     id: ddoewysiwyg
     path: ddoe/wysiwyg
     version: 2.4.0
-    configured: false
+    configured: true
     title:
       en: 'WYSIWYG Editor + Mediathek'
     description:
@@ -1317,6 +1317,49 @@ modules:
       bestitamazonpay4oxid_rejectedpayment.tpl: bestit/amazonpay4oxid/application/views/azure/tpl/email/html/bestitamazonpay4oxid_rejectedpayment.tpl
       bestitamazonpay4oxid_paybutton.tpl: bestit/amazonpay4oxid/application/views/bestitamazonpay4oxid_paybutton.tpl
       bestitamazonpay4oxid_src.tpl: bestit/amazonpay4oxid/application/views/bestitamazonpay4oxid_src.tpl
+  oe_graphql_base:
+    id: oe_graphql_base
+    path: oe/graphql-base
+    version: 5.1.1
+    configured: true
+    title:
+      de: 'GraphQL Base'
+      en: 'GraphQL Base'
+    description:
+      de: '<span>OXID GraphQL API Framework</span>'
+      en: '<span>OXID GraphQL API Framework</span>'
+    lang: ''
+    thumbnail: out/pictures/logo.png
+    author: 'OXID eSales'
+    url: www.oxid-esales.com
+    email: info@oxid-esales.com
+    controllers:
+      graphql: OxidEsales\GraphQL\Base\Component\Widget\GraphQL
+    events:
+      onActivate: '\OxidEsales\GraphQL\Base\Framework\ModuleSetup::onActivate'
+      onDeactivate: '\OxidEsales\GraphQL\Base\Framework\ModuleSetup::onDeactivate'
+    moduleSettings:
+      sJsonWebTokenSignature:
+        group: graphql_base
+        type: str
+        value: 64174fbef1c30920226f18c383697ebb09c2899c708576205e4d86bf89897df4d7dafffaafb04b4891bf394d2436c82871f124dc8a57b4128d74fc77d1359d07
+  oe_graphql_storefront:
+    id: oe_graphql_storefront
+    path: oe/graphql-storefront
+    version: 0.1.0
+    configured: true
+    title:
+      en: 'GraphQL Storefront'
+    description:
+      en: 'OXID GraphQL Storefront'
+    lang: ''
+    thumbnail: out/pictures/logo.png
+    author: 'OXID eSales'
+    url: 'https://github.com/OXID-eSales/graphql-storefront-module'
+    email: info@oxid-esales.com
+    classExtensions:
+      OxidEsales\Eshop\Application\Model\Basket: OxidEsales\GraphQL\Storefront\Shared\Shop\Basket
+      OxidEsales\Eshop\Application\Model\Voucher: OxidEsales\GraphQL\Storefront\Shared\Shop\Voucher
 moduleChains:
   classExtensions:
     OxidEsales\Eshop\Application\Model\Basket:
@@ -1324,6 +1367,7 @@ moduleChains:
       - OxidEsales\PayPalModule\Model\Basket
       - oxps/paymorrow/models/oxpspaymorrowoxbasket
       - fc/fcpayone/extend/application/models/fcPayOneBasket
+      - OxidEsales\GraphQL\Storefront\Shared\Shop\Basket
     OxidEsales\Eshop\Application\Model\User:
       - TopConcepts\Klarna\Model\KlarnaUser
       - OxidEsales\PayPalModule\Model\User
@@ -1453,3 +1497,5 @@ moduleChains:
       - bestit/amazonpay4oxid/ext/bestitamazonpay4oxid_oxsession
     OxidEsales\Eshop\Application\Controller\Admin\ModuleConfiguration:
       - bestit/amazonpay4oxid/ext/bestitamazonpay4oxid_module_config
+    OxidEsales\Eshop\Application\Model\Voucher:
+      - OxidEsales\GraphQL\Storefront\Shared\Shop\Voucher

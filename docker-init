@@ -1,0 +1,52 @@
+#!/bin/bash -e
+
+if [ "$(id -u)" = "0" ]; then
+  echo "do not run as root!"
+  exit 1
+fi
+
+cd "$(dirname "${BASH_SOURCE[0]}")"
+
+if [ -z "$UID" ]; then
+  UID=$(id -u)
+fi
+if [ -z "$GID" ]; then
+  GID=$(id -g)
+fi
+
+function add_env_default () {
+  if [ ! -e .env ] || [ -z $(grep "^$1=" .env) ]; then
+    echo "$1=$2" >> .env
+    echo "added \"$1=$2\" to .env"
+  fi
+}
+
+case "$OSTYPE" in
+  linux*)
+    if ! [ -e "docker-compose.override.yml" ]; then
+      ln -s docker-compose.linux.yml docker-compose.override.yml
+    fi
+    add_env_default PROXY_NETWORK proxy
+    add_env_default USER_UID $UID
+    add_env_default USER_GID $GID
+    add_env_default XDEBUG_REMOTE_HOST $(ip -4 addr show docker0 | grep -Po 'inet \K[\d.]+')
+    sudo install -o "$UID" -g "$GID" -d ./data
+  ;;
+  darwin*)
+    echo "MacOS support is experimental!"
+    if ! [ -e "docker-compose.override.yml" ]; then
+      ln -s docker-compose.darwin.yml docker-compose.override.yml
+    fi
+    add_env_default PROXY_NETWORK proxy
+    add_env_default FILE_SYSTEM_CONSISTENCY cached
+    add_env_default XDEBUG_REMOTE_HOST docker.for.mac.localhost
+  ;;
+  *)
+    echo "unknown: $OSTYPE"
+    exit 1
+  ;;
+esac
+
+mkdir -p data/composer ../source/tmp
+
+echo -e "- Ready for \e[33mdocker-compose up -d\e[39m\n"

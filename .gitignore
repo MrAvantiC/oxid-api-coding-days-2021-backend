@@ -6,3 +6,6 @@
 /source/migration/*
 !/source/migration/project_data/
 !/source/config.inc.php
+/data/
+/.env
+docker-compose.override.yml

@@ -1,0 +1,78 @@
+version: '2.3'
+
+networks:
+  proxy:
+    external: true
+
+volumes:
+  db:
+
+services:
+  oxid:
+    image: webvariants/php:7.4
+    volumes:
+      - ./:/app:${FILE_SYSTEM_CONSISTENCY:-consistent}
+      - ./data/composer:/composer:${FILE_SYSTEM_CONSISTENCY:-consistent}
+    working_dir: /app
+    labels:
+      - traefik.port=80
+      - traefik.frontend.rule=Host:${HOST:-oxid-coding-days.docker.localhost}
+      - traefik.frontend.passHostHeader=true
+      - traefik.docker.network=${PROXY_NETWORK:-proxy}
+    depends_on:
+      - db
+    networks:
+      - default
+      - proxy
+    environment:
+      PHP_IMAGE_VERSION: 2
+      WEB_PORT: 80
+      WEB_ROOT: "/app/source"
+      COMPOSER_HOME: "/composer"
+      COMPOSER_CACHE_DIR: "/composer/cache"
+      COMPOSER_NO_INTERACTION: ""
+      PHPINI_DATE__TIMEZONE: "Europe/Berlin"
+      PHPINI_DISPLAY_ERRORS: "true"
+      PHPINI_ZEND_EXTENSION: "xdebug.so"
+      PHPINI_XDEBUG__PROFILER_ENABLE_TRIGGER: "${XDEBUG_PROFILER_ENABLE_TRIGGER:-0}"
+      PHPINI_XDEBUG__REMOTE_HOST: "${XDEBUG_REMOTE_HOST:-localhost}"
+      PHPINI_XDEBUG__REMOTE_CONNECT_BACK: "${XDEBUG_REMOTE_CONNECT_BACK:-0}"
+      PHPINI_XDEBUG__REMOTE_AUTOSTART: "${XDEBUG_REMOTE_AUTOSTART:-0}"
+      PHPINI_XDEBUG__IDEKEY: "${XDEBUG_IDEKEY:-}"
+      PHPINI_XDEBUG__CLI_COLOR: 1
+      PHPINI_XDEBUG__MAX_NESTING_LEVEL: 500
+      PHPINI_XDEBUG__REMOTE_ENABLE: 1
+      PHPINI_XDEBUG__VAR_DISPLAY_MAX_CHILDREN: 512
+      PHPINI_XDEBUG__VAR_DISPLAY_MAX_DATA: 2560
+      PHPINI_XDEBUG__VAR_DISPLAY_MAX_DEPTH: 200
+    restart: "no"
+    logging: {driver: json-file, options: {max-file: '10', max-size: 1024k}}
+
+  db:
+    image: mysql:5.7
+    networks:
+      - default
+    volumes:
+      - ./docker/mysql/dumps/:/docker-entrypoint-initdb.d/:ro
+      - db:/var/lib/mysql/
+    command:
+      - "mysqld"
+      - "--sql_mode="
+      - "--innodb_buffer_pool_size=1G"
+      - "--innodb_log_file_size=256M"
+      - "--innodb_flush_log_at_trx_commit=1"
+      - "--innodb_flush_method=O_DIRECT"
+      - "--default-authentication-plugin=mysql_native_password"
+      - "--key-buffer-size=256M"
+      - "--skip-log-bin"
+      - "--server-id=1"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: oxid
+      MYSQL_USER: oxid
+      MYSQL_PASSWORD: oxid
+    ports:
+       - "33066:3306"
+    restart: "no"
+    logging: {driver: json-file, options: {max-file: '10', max-size: 1024k}}
+

@@ -1,0 +1,7 @@
+version: '2.3'
+services:
+  oxid:
+    volumes:
+      - "/etc/passwd:/etc/passwd:ro"
+      - "/etc/group:/etc/group:ro"
+    user: "${USER_UID:?please run echo USER_UID=$(id -u) >> .env}:${USER_GID:?please run echo USER_GID=$(id -g) >> .env}"
