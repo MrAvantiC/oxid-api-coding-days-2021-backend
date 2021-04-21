@@ -20,5 +20,5 @@ Admin:
 - https://oxid-coding-days.docker.localhost/admin/
 
 Credentials:
-- User: dev@marmalade.de
-- Pass: m4rm4l4d3
+- User: `dev@marmalade.de`
+- Pass: `m4rm4l4d3`
