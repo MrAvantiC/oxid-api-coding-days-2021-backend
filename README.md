@@ -6,9 +6,9 @@
 3. webvariants Dev-Stack
 
 ### Initialize
-Install dependencies: `composer install -n`
-Initialize environment: `./docker-init`
-Start the container: `docker-compose up -d`
+- Install dependencies: `composer install -n`
+- Initialize environment: `./docker-init`
+- Start the container: `docker-compose up -d`
 
 ### Access
 OXID:
