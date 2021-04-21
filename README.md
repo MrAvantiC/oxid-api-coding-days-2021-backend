@@ -9,6 +9,7 @@
 - Install dependencies: `composer install -n`
 - Initialize environment: `./docker-init`
 - Start the container: `docker-compose up -d`
+- After waiting one or two minutes run the example request.
 
 ### Access
 OXID:
@@ -22,3 +23,12 @@ Admin:
 Credentials:
 - User: `dev@marmalade.de`
 - Pass: `m4rm4l4d3`
+
+### Example request
+```shell
+curl \
+    -X POST \
+    -H "Content-Type: application/json" \
+    --data '{"query": "{token(username: \"dev@marmalade.de\", password: \"m4rm4l4d3\")}"}' \
+    http://oxid-coding-days.docker.localhost/graphql/
+```
