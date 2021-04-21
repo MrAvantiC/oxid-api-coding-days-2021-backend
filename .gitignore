@@ -1,0 +1,8 @@
+/.idea/
+/vendor/
+!/source/
+/source/*
+!/source/migration/
+/source/migration/*
+!/source/migration/project_data/
+!/source/config.inc.php
