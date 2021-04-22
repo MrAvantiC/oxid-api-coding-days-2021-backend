@@ -1,0 +1,22 @@
+{
+  "name": "oxid-esales/codeception-page-objects",
+  "description": "Page Objects for OXID eShop acceptance tests on codeception",
+  "keywords": [
+    "oxid",
+    "codeception",
+    "pageObject",
+    "eShop"
+  ],
+  "homepage": "https://www.oxid-esales.com/en/home.html",
+  "license": [
+    "GPL-3.0-only",
+    "proprietary"
+  ],
+  "autoload": {
+    "psr-4": {
+      "OxidEsales\\Codeception\\Admin\\": "Admin",
+      "OxidEsales\\Codeception\\Page\\": "Page",
+      "OxidEsales\\Codeception\\Step\\": "Step"
+    }
+  }
+}

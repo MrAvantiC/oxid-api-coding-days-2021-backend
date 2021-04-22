@@ -1,0 +1,9 @@
+{
+  "docs": {
+    "Introduction": ["features"],
+    "Installation": ["getting-started", "symfony-bundle", "laravel-package", "universal_service_providers", "other-frameworks"],
+    "Usage": ["queries", "mutations", "type_mapping", "extend_type", "authentication_authorization", "external_type_declaration", "input-types", "inheritance"],
+    "Advanced": ["file-uploads", "pagination", "custom-output-types", "troubleshooting"],
+    "Reference": ["annotations_reference"]
+  }
+}
