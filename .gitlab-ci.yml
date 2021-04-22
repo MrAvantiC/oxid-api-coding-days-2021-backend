@@ -20,6 +20,7 @@ deploy:
 
     # run composer
     - composer install
+    - ln -s ../../config.php source/config.local.php
 
     # packing
     - tar -zcf /home/releases/$CI_COMMIT_REF_NAME-$CI_BUILD_REF.tar.gz . --exclude-vcs
