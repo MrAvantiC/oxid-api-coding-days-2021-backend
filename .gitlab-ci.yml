@@ -17,7 +17,10 @@ deploy:
     - find source/ -type d -print0 | xargs -0 chmod 775
     - find source/ -type f -print0 | xargs -0 chmod 664
     - chmod 444 source/config.inc.php
-    
+
+    # run composer
+    - composer install
+
     # packing
     - tar -zcf /home/releases/$CI_COMMIT_REF_NAME-$CI_BUILD_REF.tar.gz . --exclude-vcs
     - NOW=$(date '+%Y-%m-%d %H:%M:%S')

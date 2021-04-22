@@ -2,3 +2,14 @@
 /data/
 /.env
 docker-compose.override.yml
+!/source/
+/source/*
+!/source/migration/
+/source/migration/*
+!/source/migration/project_data/
+!/source/config.inc.php
+!/source/modules/
+/source/modules/*
+!/source/modules/marmalade/
+/source/modules/marmalade/*
+!/source/modules/marmalade/graphql-playground
