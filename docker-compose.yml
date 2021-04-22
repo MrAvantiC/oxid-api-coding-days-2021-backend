@@ -9,7 +9,7 @@ volumes:
 
 services:
   oxid:
-    image: webvariants/php:7.4
+    build: docker/oxid/
     volumes:
       - ./:/app:${FILE_SYSTEM_CONSISTENCY:-consistent}
       - ./data/composer:/composer:${FILE_SYSTEM_CONSISTENCY:-consistent}
