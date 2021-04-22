@@ -1,0 +1,29 @@
+---
+variables:
+  KEEP_RELEASES: 30
+
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  artifacts:
+    expire_in: 1 hour
+  script: 
+    # remove gitlab-ci.yml
+    - rm .gitlab-ci.yml
+
+    # fix file permissions
+    - find source/ -type d -print0 | xargs -0 chmod 775
+    - find source/ -type f -print0 | xargs -0 chmod 664
+    - chmod 444 source/config.inc.php
+    
+    # packing
+    - tar -zcf /home/releases/$CI_COMMIT_REF_NAME-$CI_BUILD_REF.tar.gz . --exclude-vcs
+    - NOW=$(date '+%Y-%m-%d %H:%M:%S')
+    - /opt/repos/sc-lib/gitlab-ci/register_release.py /home/releases/releases.json "$CI_COMMIT_REF_NAME-$CI_BUILD_REF" $KEEP_RELEASES "$NOW"
+    - curl --data-urlencode "argString=-commit-id $CI_COMMIT_REF_NAME-$CI_BUILD_REF -environment stage" http://localhost:4440/api/13/job/$RUNDECK_JOB_ID/run?authtoken=$RUNDECK_TOKEN
+    
+    - "# Delete old releases"
+    - cd /home/releases
+    - ls -A1t /home/releases/"$CI_COMMIT_REF_NAME"-* | tail -n +$KEEP_RELEASES | xargs -r rm
