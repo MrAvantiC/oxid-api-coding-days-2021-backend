@@ -1360,6 +1360,20 @@ modules:
     classExtensions:
       OxidEsales\Eshop\Application\Model\Basket: OxidEsales\GraphQL\Storefront\Shared\Shop\Basket
       OxidEsales\Eshop\Application\Model\Voucher: OxidEsales\GraphQL\Storefront\Shared\Shop\Voucher
+  marmalade/graph-q-l-playground:
+    id: marmalade/graph-q-l-playground
+    path: marmalade/graphql-playground
+    version: 0.0.1
+    configured: false
+    title:
+      en: 'GraphQL GraphQLPlayground'
+    description:
+      en: ''
+    lang: ''
+    thumbnail: out/pictures/logo.png
+    author: Marmalade
+    url: ''
+    email: ''
 moduleChains:
   classExtensions:
     OxidEsales\Eshop\Application\Model\Basket:

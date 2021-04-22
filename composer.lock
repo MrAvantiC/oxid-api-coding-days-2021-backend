@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a831a8e770d3fe749e8db49acd10f3bf",
+    "content-hash": "05361365623f4e7c14c3f2847dbfcbf5",
     "packages": [
         {
             "name": "amzn/amazon-pay-sdk-php",
@@ -2567,6 +2567,82 @@
                 }
             ],
             "time": "2021-02-16T09:40:01+00:00"
+        },
+        {
+            "name": "marmalade/graphql-playground",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "modules/marmalade/graphql-playground",
+                "reference": "b6515e185b09fb826eccc185b36ee9961ad2e442"
+            },
+            "require": {
+                "oxid-esales/graphql-base": "^5.1.1",
+                "php": "^7.1 || ^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.18.2",
+                "oxid-esales/oxideshop-ce": "^6.5",
+                "oxid-esales/oxideshop-unified-namespace-generator": "^2.0",
+                "php-parallel-lint/php-parallel-lint": "^1.1",
+                "phpstan/phpstan": "^0.12.26",
+                "phpunit/phpunit": "^7.5.20|^8.5|^9"
+            },
+            "type": "oxideshop-module",
+            "extra": {
+                "oxideshop": {
+                    "target-directory": "marmalade/graphql-playground"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Marmalade\\GraphQL\\GraphQLPlayground\\": "src/",
+                    "Marmalade\\GraphQL\\GraphQLPlayground\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "post-create-project-cmd": [
+                    "OxidEsales\\GraphQL\\Skeleton\\Installer::postInstall",
+                    "composer update",
+                    "@fix"
+                ],
+                "fix:fixer": [
+                    "php-cs-fixer fix"
+                ],
+                "fix": [
+                    "@fix:fixer"
+                ],
+                "test:lint": [
+                    "php-cs-fixer fix --dry-run"
+                ],
+                "test:syntax": [
+                    "parallel-lint src/ tests/ metadata.php"
+                ],
+                "test:static": [
+                    "phpstan --memory-limit=-1 analyse src/"
+                ],
+                "test:unit": [
+                    "phpunit -c tests/phpunit.xml tests/Unit/"
+                ],
+                "test": [
+                    "@test:syntax",
+                    "@test:lint",
+                    "@test:static",
+                    "@test:unit"
+                ]
+            },
+            "license": [
+                "GPL-3.0"
+            ],
+            "keywords": [
+                "GraphQL",
+                "eShop",
+                "modules",
+                "oxid"
+            ],
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "monolog/monolog",
@@ -9323,7 +9399,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "marmalade/graphql-playground": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
