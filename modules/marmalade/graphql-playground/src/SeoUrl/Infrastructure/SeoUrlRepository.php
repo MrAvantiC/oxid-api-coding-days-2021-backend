@@ -21,11 +21,14 @@ final class SeoUrlRepository
      */
     public function seoUrl(string $sSeoUrl): SeoUrlDataType
     {
+        // remove trailing slash if existing
+        $sSeoUrl = ltrim($sSeoUrl, '/');
+
         $sQuery = "SELECT * FROM oxseo WHERE oxseourl = ?";
         $aRow = DatabaseProvider::getDb(DatabaseInterface::FETCH_MODE_ASSOC)->getRow($sQuery, [$sSeoUrl]);
 
         if (empty($aRow)) {
-            throw new NotFound();
+            throw new NotFound("SeoUrl not found");
         }
 
         return new SeoUrlDataType(

@@ -11,7 +11,6 @@ namespace Marmalade\GraphQL\GraphQLPlayground\SeoUrl\Service;
 
 use Marmalade\GraphQL\GraphQLPlayground\SeoUrl\DataType\SeoUrl as SeoUrlDataType;
 use Marmalade\GraphQL\GraphQLPlayground\SeoUrl\Infrastructure\SeoUrlRepository;
-use OxidEsales\GraphQL\Base\Exception\InvalidLogin;
 use OxidEsales\GraphQL\Base\Exception\NotFound;
 
 final class SeoUrl
