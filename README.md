@@ -6,9 +6,9 @@
 3. webvariants Dev-Stack
 
 ### Initialize
-- Install dependencies: `composer install -n`
 - Initialize environment: `./docker-init`
 - Start the container: `docker-compose up -d`
+- Install dependencies: `docker-compose exec oxid composer install -n`
 - After waiting one or two minutes run the example request.
 - If resolving the domain `oxid-coding-days.docker.localhost` fails, just run `echo '127.0.0.1' | sudo tee -a /etc/hosts`
 
