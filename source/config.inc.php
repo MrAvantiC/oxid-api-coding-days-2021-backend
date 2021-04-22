@@ -69,7 +69,7 @@ $this->blSeoLogging = false;
  * 6 = SMTP Debug Messages
  * 8 = display smarty template names (requires /tmp cleanup)
  */
-$this->iDebug = -1;
+$this->iDebug = 0;
 
 /**
  * Should template blocks be highlighted in frontend?
