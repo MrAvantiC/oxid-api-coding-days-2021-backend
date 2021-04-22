@@ -33,7 +33,7 @@
     "post-install-cmd": [
       "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
       "@oe:ide-helper:generate",
-      "test ! -f source/config.local.php && echo '<?php\n$this->dbPwd = \"oxid\";' > source/config.local.php"
+      "test -f source/config.local.php || echo '<?php\n$this->dbPwd = \"oxid\";' > source/config.local.php"
     ],
     "post-update-cmd": [
       "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
