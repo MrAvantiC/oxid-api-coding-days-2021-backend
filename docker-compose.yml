@@ -1,9 +1,5 @@
 version: '2.3'
 
-networks:
-  proxy:
-    external: true
-
 volumes:
   db:
 
@@ -14,16 +10,8 @@ services:
       - ./:/app:${FILE_SYSTEM_CONSISTENCY:-consistent}
       - ./data/composer:/composer:${FILE_SYSTEM_CONSISTENCY:-consistent}
     working_dir: /app
-    labels:
-      - traefik.port=80
-      - traefik.frontend.rule=Host:${HOST:-oxid-coding-days.docker.localhost}
-      - traefik.frontend.passHostHeader=true
-      - traefik.docker.network=${PROXY_NETWORK:-proxy}
     depends_on:
       - db
-    networks:
-      - default
-      - proxy
     environment:
       PHP_IMAGE_VERSION: 2
       WEB_PORT: 80
@@ -47,11 +35,11 @@ services:
       PHPINI_XDEBUG__VAR_DISPLAY_MAX_DEPTH: 200
     restart: "no"
     logging: {driver: json-file, options: {max-file: '10', max-size: 1024k}}
+    ports:
+      - "80:80"
 
   db:
     image: mysql:5.7
-    networks:
-      - default
     volumes:
       - ./docker/mysql/dumps/:/docker-entrypoint-initdb.d/:ro
       - db:/var/lib/mysql/
