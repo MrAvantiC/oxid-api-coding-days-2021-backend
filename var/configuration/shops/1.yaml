@@ -1364,7 +1364,7 @@ modules:
     id: marmalade/graph-q-l-playground
     path: marmalade/graphql-playground
     version: 0.0.1
-    configured: false
+    configured: true
     title:
       en: 'GraphQL GraphQLPlayground'
     description:

@@ -16,14 +16,14 @@ final class NamespaceMapper implements NamespaceMapperInterface
     public function getControllerNamespaceMapping(): array
     {
         return [
-            '\\Marmalade\\GraphQL\\GraphQLPlayground\\Category\\Controller' => __DIR__ . '/../../Category/Controller/',
+            '\\Marmalade\\GraphQL\\GraphQLPlayground\\SeoUrl\\Controller' => __DIR__ . '/../../SeoUrl/Controller/',
         ];
     }
 
     public function getTypeNamespaceMapping(): array
     {
         return [
-            '\\Marmalade\\GraphQL\\GraphQLPlayground\\Category\\DataType' => __DIR__ . '/../../Category/DataType/',
+            '\\Marmalade\\GraphQL\\GraphQLPlayground\\SeoUrl\\DataType' => __DIR__ . '/../../SeoUrl/DataType/',
         ];
     }
 }

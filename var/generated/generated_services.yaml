@@ -5,3 +5,5 @@ imports:
     resource: ../../source/modules/oe/graphql-base/services.yaml
   -
     resource: ../../source/modules/oe/graphql-storefront/services.yaml
+  -
+    resource: ../../source/modules/marmalade/graphql-playground/services.yaml
