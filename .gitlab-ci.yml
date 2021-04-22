@@ -20,6 +20,7 @@ deploy:
 
     # run composer
     - composer install
+    - rm source/config.local.php
     - ln -s ../../config.php source/config.local.php
 
     # packing
