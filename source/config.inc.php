@@ -204,3 +204,8 @@ $this->blDelSetupDir = true;
  * @deprecated since v6.0 (2017-05-15); This property will be removed in the future as the shop will always use UTF-8.
  */
 $this->iUtfMode = 1;
+
+// Include a local configuration.
+if (file_exists(__DIR__ . '/config.local.php')) {
+    include __DIR__ . '/config.local.php';
+}
