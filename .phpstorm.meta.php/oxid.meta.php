@@ -101,6 +101,14 @@ namespace PHPSTORM_META {
 
 
 
+    namespace Marmalade\GraphQLPlayground\OxidExtensions\Application\Controller {
+    class BasketController_parent extends \OxidEsales\Eshop\Application\Controller\BasketController
+    {
+
+    }
+}
+
+
     namespace OxidEsales\GdprOptinModule\Component\Widget {
     class ArticleDetails_parent extends \OxidEsales\Eshop\Application\Component\Widget\ArticleDetails
     {

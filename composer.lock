@@ -2574,7 +2574,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/marmalade/graphql-playground",
-                "reference": "b6515e185b09fb826eccc185b36ee9961ad2e442"
+                "reference": "9c238e15ab76961d7c39a1701f676d74b831da9f"
             },
             "require": {
                 "oxid-esales/graphql-base": "^5.1.1",
@@ -2597,7 +2597,8 @@
             "autoload": {
                 "psr-4": {
                     "Marmalade\\GraphQL\\GraphQLPlayground\\": "src/",
-                    "Marmalade\\GraphQL\\GraphQLPlayground\\Tests\\": "tests/"
+                    "Marmalade\\GraphQL\\GraphQLPlayground\\Tests\\": "tests/",
+                    "Marmalade\\GraphQLPlayground\\OxidExtensions\\": "oxid-extensions/"
                 }
             },
             "scripts": {
