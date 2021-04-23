@@ -6,9 +6,28 @@ services:
 
     Marmalade\GraphQL\GraphQLPlayground\:
         resource: 'src/*'
-        exclude: 'src/**/DataType'
+        exclude: 'src/**/{DataType,Shop/Controller}'
         public: true
 
     Marmalade\GraphQL\GraphQLPlayground\Shared\Service\NamespaceMapper:
         class: Marmalade\GraphQL\GraphQLPlayground\Shared\Service\NamespaceMapper
         tags: ['graphql_namespace_mapper']
+
+    Marmalade\GraphQL\GraphQLPlayground\Shared\Shop\Service\Basket:
+        arguments:
+            $session: '@marmalade.grapql-playground.session'
+        public: true
+
+    marmalade.grapql-playground.session:
+        class: 'OxidEsales\Eshop\Core\Session'
+        factory: ['OxidEsales\Eshop\Core\Registry', 'getSession']
+
+    Lcobucci\JWT\Validation\Constraint\SignedWith: ~
+
+    Lcobucci\JWT\Validation\Validator: ~
+
+    Lcobucci\JWT\Signer\Key:
+        arguments:
+            $content: '@=service("OxidEsales\\GraphQL\\Base\\Service\\KeyRegistry").getSignatureKey()'
+
+    Lcobucci\JWT\Signer\Hmac\Sha512: ~

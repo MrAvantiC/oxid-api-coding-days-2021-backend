@@ -4,6 +4,9 @@
  * See LICENSE file for license details.
  */
 
+use Marmalade\GraphQL\GraphQLPlayground\Shared\Shop\Controller as ModuleController;
+use OxidEsales\Eshop\Application\Controller as OxidController;
+
 /**
  * Metadata version
  */
@@ -16,12 +19,12 @@ $aModule = [
     'id'          => 'marmalade/graph-q-l-playground',
     'title'       => 'GraphQL GraphQLPlayground',
     'description' =>  '',
-    'thumbnail'   => 'out/pictures/logo.png',
-    'version'     => '0.0.1',
-    'author'      => 'Marmalade',
+    'version'     => '0.2.0',
+    'author'      => 'Some cool guys',
     'url'         => '',
     'email'       => '',
     'extend'      => [
+        OxidController\BasketController::class => ModuleController\Basket::class,
     ],
     'controllers' => [
     ],

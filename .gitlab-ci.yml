@@ -16,11 +16,12 @@ deploy:
     # fix file permissions
     - find source/ -type d -print0 | xargs -0 chmod 775
     - find source/ -type f -print0 | xargs -0 chmod 664
-    - chmod 444 source/config.inc.php
+    # remove writable and executable flag from config.inc.php
+    - chmod a-wx source/config.inc.php
 
     # run composer
-    - composer install
-    - rm source/config.local.php
+    - composer install -no --no-dev
+    - rm -f source/config.local.php
     - ln -s ../../../config.php source/config.local.php
     - mkdir source/tmp
     - chmod 770 source/tmp

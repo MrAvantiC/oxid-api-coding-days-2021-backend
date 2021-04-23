@@ -1363,17 +1363,19 @@ modules:
   marmalade/graph-q-l-playground:
     id: marmalade/graph-q-l-playground
     path: marmalade/graphql-playground
-    version: 0.0.1
+    version: 0.2.0
     configured: true
     title:
       en: 'GraphQL GraphQLPlayground'
     description:
       en: ''
     lang: ''
-    thumbnail: out/pictures/logo.png
-    author: Marmalade
+    thumbnail: ''
+    author: 'Some cool guys'
     url: ''
     email: ''
+    classExtensions:
+      OxidEsales\Eshop\Application\Controller\BasketController: Marmalade\GraphQL\GraphQLPlayground\Shared\Shop\Controller\Basket
 moduleChains:
   classExtensions:
     OxidEsales\Eshop\Application\Model\Basket:
@@ -1442,6 +1444,7 @@ moduleChains:
     OxidEsales\Eshop\Application\Controller\BasketController:
       - TopConcepts\Klarna\Controller\KlarnaBasketController
       - fc/fcpayone/extend/application/controllers/fcPayOneBasketView
+      - Marmalade\GraphQL\GraphQLPlayground\Shared\Shop\Controller\Basket
     OxidEsales\Eshop\Application\Controller\Admin\OrderAddress:
       - TopConcepts\Klarna\Controller\Admin\KlarnaOrderAddress
     OxidEsales\Eshop\Application\Controller\Admin\OrderList:
