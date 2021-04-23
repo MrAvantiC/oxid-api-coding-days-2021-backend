@@ -1,7 +1,8 @@
 /.idea/
 /data/
 /.env
-docker-compose.override.yml
+/docker-compose.override.yml
+/vendor/
 !/source/
 /source/*
 !/source/migration/
