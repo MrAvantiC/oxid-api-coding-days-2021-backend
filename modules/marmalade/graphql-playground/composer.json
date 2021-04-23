@@ -18,7 +18,7 @@
     },
     "require": {
         "php": "^7.1 || ^8.0",
-        "oxid-esales/graphql-base": "^5.1.1"
+        "oxid-esales/graphql-base": "dev-b-6.x"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.5.20|^8.5|^9",

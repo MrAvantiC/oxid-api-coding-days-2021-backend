@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "05361365623f4e7c14c3f2847dbfcbf5",
+    "content-hash": "c9f59bcf646f722f953db2a800df3320",
     "packages": [
         {
             "name": "amzn/amazon-pay-sdk-php",
@@ -2574,10 +2574,10 @@
             "dist": {
                 "type": "path",
                 "url": "modules/marmalade/graphql-playground",
-                "reference": "9c238e15ab76961d7c39a1701f676d74b831da9f"
+                "reference": "aec5457343c4f8c35f6a6e2b3c4281430fe7b364"
             },
             "require": {
-                "oxid-esales/graphql-base": "^5.1.1",
+                "oxid-esales/graphql-base": "dev-b-6.x",
                 "php": "^7.1 || ^8.0"
             },
             "require-dev": {
@@ -2597,8 +2597,7 @@
             "autoload": {
                 "psr-4": {
                     "Marmalade\\GraphQL\\GraphQLPlayground\\": "src/",
-                    "Marmalade\\GraphQL\\GraphQLPlayground\\Tests\\": "tests/",
-                    "Marmalade\\GraphQLPlayground\\OxidExtensions\\": "oxid-extensions/"
+                    "Marmalade\\GraphQL\\GraphQLPlayground\\Tests\\": "tests/"
                 }
             },
             "scripts": {
@@ -2936,16 +2935,16 @@
         },
         {
             "name": "oxid-esales/graphql-base",
-            "version": "v5.1.1",
+            "version": "dev-b-6.x",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OXID-eSales/graphql-base-module.git",
-                "reference": "0df7bb410cc4567ca820edea731ac6e8ad39117d"
+                "reference": "e13464cb2a850e8e38bc286ff64a67c3fb5b3912"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OXID-eSales/graphql-base-module/zipball/0df7bb410cc4567ca820edea731ac6e8ad39117d",
-                "reference": "0df7bb410cc4567ca820edea731ac6e8ad39117d",
+                "url": "https://api.github.com/repos/OXID-eSales/graphql-base-module/zipball/e13464cb2a850e8e38bc286ff64a67c3fb5b3912",
+                "reference": "e13464cb2a850e8e38bc286ff64a67c3fb5b3912",
                 "shasum": ""
             },
             "require": {
@@ -2956,10 +2955,10 @@
                 "thecodingmachine/graphqlite": "^3.1.2"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.16.1",
-                "infection/infection": "^0.13.0|^0.14.0|^0.15.0",
-                "oxid-esales/oxideshop-ce": "6.5",
-                "oxid-esales/oxideshop-unified-namespace-generator": "^v2.0",
+                "friendsofphp/php-cs-fixer": "^2.18.2",
+                "infection/infection": "0.13",
+                "oxid-esales/oxideshop-ce": "6.5|6.8",
+                "oxid-esales/oxideshop-unified-namespace-generator": "^v2.0|^v2.2.0",
                 "php-parallel-lint/php-parallel-lint": "^1.1",
                 "phpstan/phpstan": "^0.12.26",
                 "phpunit/phpunit": "^7.5.20|^8.5|^9"
@@ -2992,27 +2991,28 @@
                 "modules"
             ],
             "support": {
-                "source": "https://github.com/OXID-eSales/graphql-base-module/tree/v5.1.1"
+                "source": "https://github.com/OXID-eSales/graphql-base-module/tree/b-6.x-OXDEV-4506"
             },
-            "time": "2020-12-16T10:13:11+00:00"
+            "time": "2021-04-21T10:14:27+00:00"
         },
         {
             "name": "oxid-esales/graphql-storefront",
-            "version": "v0.1.0",
+            "version": "dev-b-6.x",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OXID-eSales/graphql-storefront-module.git",
-                "reference": "74562abda4aa04a726b8a720048b3bad13292e2d"
+                "reference": "5e134003e3afce678bd8d95896fa39cb53d9494e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OXID-eSales/graphql-storefront-module/zipball/74562abda4aa04a726b8a720048b3bad13292e2d",
-                "reference": "74562abda4aa04a726b8a720048b3bad13292e2d",
+                "url": "https://api.github.com/repos/OXID-eSales/graphql-storefront-module/zipball/5e134003e3afce678bd8d95896fa39cb53d9494e",
+                "reference": "5e134003e3afce678bd8d95896fa39cb53d9494e",
                 "shasum": ""
             },
             "require": {
                 "doctrine/dbal": "^v2.7",
-                "oxid-esales/graphql-base": "^5.1.1",
+                "oxid-esales/graphql-base": "dev-b-6.x",
+                "oxid-esales/oxideshop-doctrine-migration-wrapper": "^v3.1.0",
                 "php": "^7.1"
             },
             "conflict": {
@@ -3021,15 +3021,16 @@
                 "oxid-esales/graphql-checkout": "*"
             },
             "require-dev": {
+                "codeception/module-db": "*",
                 "codeception/module-phpbrowser": "*",
                 "codeception/module-rest": "*",
-                "friendsofphp/php-cs-fixer": "^2.16.1",
+                "friendsofphp/php-cs-fixer": "^2.18.2",
                 "oxid-esales/oxideshop-ce": "^6.5",
                 "oxid-esales/oxideshop-unified-namespace-generator": "^2.0",
                 "php-parallel-lint/php-parallel-lint": "^1.1",
                 "phpstan/phpstan": "^0.12.26",
                 "phpunit/phpunit": "^7.5.20|^8.5|^9",
-                "sensiolabs-de/deptrac-shim": "^0.6.0|^0.9.0"
+                "qossmic/deptrac-shim": "^0.6.0|^0.9.0"
             },
             "type": "oxideshop-module",
             "extra": {
@@ -3059,9 +3060,9 @@
                 "modules"
             ],
             "support": {
-                "source": "https://github.com/OXID-eSales/graphql-storefront-module/tree/v0.1.0"
+                "source": "https://github.com/OXID-eSales/graphql-storefront-module/tree/b-6.x"
             },
-            "time": "2020-12-16T10:49:50+00:00"
+            "time": "2021-04-21T12:58:29+00:00"
         },
         {
             "name": "oxid-esales/oxideshop-ce",
@@ -8650,44 +8651,6 @@
             "time": "2019-10-30T15:31:00+00:00"
         },
         {
-            "name": "oxid-esales/azure-theme",
-            "version": "v1.4.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/OXID-eSales/azure-theme.git",
-                "reference": "60d6bc58cde60aff96a9c591cd34ec708b724215"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/OXID-eSales/azure-theme/zipball/60d6bc58cde60aff96a9c591cd34ec708b724215",
-                "reference": "60d6bc58cde60aff96a9c591cd34ec708b724215",
-                "shasum": ""
-            },
-            "type": "oxideshop-theme",
-            "extra": {
-                "oxideshop": {
-                    "target-directory": "azure",
-                    "assets-directory": "out/azure"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0",
-                "proprietary"
-            ],
-            "description": "This is Azure Theme for OXID eShop.",
-            "homepage": "https://www.oxid-esales.com/en/home.html",
-            "keywords": [
-                "OXID",
-                "eshop",
-                "themes"
-            ],
-            "support": {
-                "source": "https://github.com/OXID-eSales/azure-theme/tree/v1.4.2"
-            },
-            "time": "2018-11-20T09:53:10+00:00"
-        },
-        {
             "name": "oxid-esales/codeception-modules",
             "version": "v1.5.0",
             "source": {
@@ -9401,6 +9364,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "oxid-esales/graphql-base": 20,
+        "oxid-esales/graphql-storefront": 20,
         "marmalade/graphql-playground": 20
     },
     "prefer-stable": false,
