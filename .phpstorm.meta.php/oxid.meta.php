@@ -101,8 +101,8 @@ namespace PHPSTORM_META {
 
 
 
-    namespace Marmalade\GraphQLPlayground\OxidExtensions\Application\Controller {
-    class BasketController_parent extends \OxidEsales\Eshop\Application\Controller\BasketController
+    namespace Marmalade\GraphQL\GraphQLPlayground\Shared\Shop\Controller {
+    class Basket_parent extends \OxidEsales\Eshop\Application\Controller\BasketController
     {
 
     }
