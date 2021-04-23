@@ -62,3 +62,10 @@
 
 Options -Indexes
 DirectoryIndex index.php index.html
+
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "https://oxid-coding-days.marmalade.build/"
+    Header set Access-Control-Allow-Headers "Authorization,Accept,Accept-Charset,Accept-Encoding,Accept-Language,Connection,Content-Type,Cookie,DNT,Host,Keep-Alive,Origin,Referer,User-Agent,X-CSRF-Token,X-Requested-With"
+    Header set Access-Control-Allow-Methods "*"
+    Header set Access-Control-Allow-Credentials true
+</IfModule>
