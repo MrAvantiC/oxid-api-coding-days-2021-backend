@@ -8,6 +8,7 @@ use OxidEsales\Eshop\Application\Controller\BasketController as EshopBasketContr
 use OxidEsales\Eshop\Core\Registry;
 use OxidEsales\EshopCommunity\Internal\Container\ContainerFactory;
 use OxidEsales\GraphQL\Storefront\Basket\Exception\BasketAccessForbidden;
+use OxidEsales\GraphQL\Storefront\Basket\Exception\BasketNotFound;
 
 /**
  * Class Basket
@@ -22,6 +23,7 @@ class Basket extends Basket_parent
      *
      * @return string
      * @throws BasketAccessForbidden
+     * @throws BasketNotFound
      */
     public function applyBasket(): string
     {
